@@ -34,8 +34,11 @@ def folders():
             else:
 		fileList = os.listdir(currentPath[len(currentPath)-1])
                 loop = False #finish traversing folders as soon as a single file is found in a folder
+#here with fileList and currentPath we can start uploading files
 #add code to add folders to tree data structure as they are traversed, then as the tree is traversed, 
 #folders are uploaded automatically as individual items
+#modify code to create identifiers so that currentPath becomes file name and identifier
+#no need to name files again, IA uses file names of the files themselves as they are before upload 
 
 # Create identifier by replacing spaces with dashes in input:
 def IdentifierDash(input):
