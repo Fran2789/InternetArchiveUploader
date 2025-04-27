@@ -39,6 +39,8 @@ def folders():
 #folders are uploaded automatically as individual items
 #modify code to create identifiers so that currentPath becomes file name and identifier
 #no need to name files again, because IA uses file names of the files themselves as they are before they are uploaded
+#the code above will probably loop as fhe tree is traversed
+# the uoload code will loop every time a folder has only files
 
 # Create identifier by replacing spaces with dashes in input:
 def IdentifierDash(input):
@@ -149,7 +151,8 @@ preorderTraversal(root)
 
 # upload code
 
-md = {'collection': collection, 'title': title, 'mediatype': 'data'}
+#put this in loop 
+md = {'collection': 'community_data', 'title': title, 'mediatype': 'data'}
 r = upload(IdentifierDash, files=['foo.txt', 'bar.mov'], metadata=md)
 r[0].status_code
 
