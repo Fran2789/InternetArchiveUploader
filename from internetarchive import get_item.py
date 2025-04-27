@@ -7,64 +7,27 @@ import os
 from internetarchive import upload
 from collections import deque
 
-
-
-# get directory structure
-def folders():
-
-    parentFolderList = []
-    childFolderList = []
-    loop =  True
-    parentFolderList = os.listdir(".")
-    currentPath = []  
-    for topFolderElement in parentFolderList:
-            if os.path.isdir(topFolderElement) == True:
-                childFolderList.append(topFolderElement)
-
-    while loop == True:
-    
-        parentFolderList.clear() 
-        parentFolderList = os.listdir(childFolderList[0])
-	currentPath.append(childFolderList[0])
-        childFolderList.clear() 
-
-        for topFolderElement in parentFolderList:
-            if os.path.isdir(topFolderElement) == True:
-                childFolderList.append(topFolderElement)
-            else:
-		fileList = os.listdir(currentPath[len(currentPath)-1])
-                loop = False #finish traversing folders as soon as a single file is found in a folder
-#here with fileList and currentPath we can start uploading files they have not been added to upload code
-#will need to make another function to get a list of files to upload with their paths
-#add code to add folders to tree data structure as they are traversed, then as the tree is traversed, 
-#folders are uploaded automatically as individual items
-#modify code for creating identifiers so that currentPath becomes file name and identifier
-#no need to name files again, because IA uses file names of the files themselves as they are before they are uploaded
-#the code above will probably loop as fhe tree is traversed
-# the uoload code will loop every time a folder has only files
-
 # Create identifier by replacing spaces with dashes in input:
 def IdentifierDash(userInput):
-    userInputList = list(userInput)
-    j = 0
-    output = ""
+	userInputList = list(userInput)
+	j = 0
+	output = ""
 
-    for userInputLetter in userInputList:
-        if userInputLetter == " ":
-            userInputList[j] = userInputList[j].lower()
-            userInputList.insert(j, "-")
-        j = j + 1
-    
-    userInputLength = len(userInputList)
+	for userInputLetter in userInputList:
+		if userInputLetter == " ":
+			userInputList[j] = userInputList[j].lower()
+			userInputList.insert(j, "-")
+		j = j + 1
+	
+	userInputLength = len(userInputList)
 
-    if userInputLength > 100:
-        for k in range(99):
-            output = output.join(userInputList[k])
-    else:
-        output = output.join(userInputList)
+	if userInputLength > 100:
+		for k in range(99):
+			output = output.join(userInputList[k])
+	else:
+		output = output.join(userInputList)
 
-    return output
-
+	return output
 
 # Node Structure of K-ary Tree
 class NewNode():
@@ -85,6 +48,7 @@ def preorderTraversal(root):
 	Preorder = []
 	Preorder.append(root.key)
 	Stack.append(root)
+	
 	while len(Stack) > 0:
 		# 'Flag' checks whether all the child
 		# nodes have been visited.
@@ -149,6 +113,48 @@ root.child[2].child.append(NewNode(8))
 root.child[2].child.append(NewNode(9))
 
 preorderTraversal(root)
+
+# get directory structure
+def folders():
+
+	parentFolderList = []
+	childFolderList = []
+	loop =  True
+	parentFolderList = os.listdir(".")
+	root = NewNode("root")
+	currentPath = []  
+
+	for topFolderElement in parentFolderList:
+			if os.path.isdir(topFolderElement) == True:
+				childFolderList.append(topFolderElement)
+				#root.child.append(childFolderList)
+				numberOfFolders = len(root.child)
+
+	while loop == True:
+		parentFolderList.clear() 
+		parentFolderList = os.listdir(childFolderList[0])
+		currentPath.append(childFolderList[0])
+		childFolderList.clear() 
+
+		for topFolderElement in parentFolderList:
+			if os.path.isdir(topFolderElement) == True:
+				childFolderList.append(topFolderElement)
+				#root.child[].append(childFolderList)
+			else:
+				fileList = os.listdir(currentPath[len(currentPath)-1])
+				loop = False #maybe?
+				#making code to discover folder structure
+
+				 #finish traversing folders as soon as a single file is found in a folder
+#here with fileList and currentPath we can start uploading files they have not been added to upload code
+#will need to make another function to get a list of files to upload with their paths
+#add code to add folders to tree data structure as they are traversed, then as the tree is traversed, 
+#folders are uploaded automatically as individual items
+#modify code for creating identifiers so that currentPath becomes file name and identifier
+#no need to name files again, because IA uses file names of the files themselves as they are before they are uploaded
+#the code above will probably loop as fhe tree is traversed
+# the uoload code will loop every time a folder has only files
+
 
 # upload code
 
