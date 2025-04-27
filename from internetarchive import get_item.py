@@ -16,7 +16,7 @@ def folders():
     childFolderList = []
     loop =  True
     parentFolderList = os.listdir(".")
-
+    currentPath = []  
     for topFolderElement in parentFolderList:
             if os.path.isdir(topFolderElement) == True:
                 childFolderList.append(topFolderElement)
@@ -25,14 +25,15 @@ def folders():
     
         parentFolderList.clear() 
         parentFolderList = os.listdir(childFolderList[0])
+	currentPath.append(childFolderList[0])
         childFolderList.clear() 
 
         for topFolderElement in parentFolderList:
             if os.path.isdir(topFolderElement) == True:
                 childFolderList.append(topFolderElement)
             else:
-                loop = False
-
+		fileList = os.listdir(currentPath[len(currentPath)-1])
+                loop = False #finish traversing folders as soon as a single file is found in a folder
 
 
 # Create identifier by replacing spaces with dashes in input:
