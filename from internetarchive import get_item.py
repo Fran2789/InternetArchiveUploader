@@ -34,7 +34,8 @@ def folders():
             else:
 		fileList = os.listdir(currentPath[len(currentPath)-1])
                 loop = False #finish traversing folders as soon as a single file is found in a folder
-
+#add code to add folders to tree data structure as they are traversed, then as the tree is traversed, 
+#folders are uploaded automatically as individual items
 
 # Create identifier by replacing spaces with dashes in input:
 def IdentifierDash(input):
