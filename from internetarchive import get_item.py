@@ -38,7 +38,7 @@ def folders():
 #add code to add folders to tree data structure as they are traversed, then as the tree is traversed, 
 #folders are uploaded automatically as individual items
 #modify code to create identifiers so that currentPath becomes file name and identifier
-#no need to name files again, IA uses file names of the files themselves as they are before upload 
+#no need to name files again, because IA uses file names of the files themselves as they are before they are uploaded
 
 # Create identifier by replacing spaces with dashes in input:
 def IdentifierDash(input):
