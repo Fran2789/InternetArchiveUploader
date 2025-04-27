@@ -34,7 +34,8 @@ def folders():
             else:
 		fileList = os.listdir(currentPath[len(currentPath)-1])
                 loop = False #finish traversing folders as soon as a single file is found in a folder
-#here with fileList and currentPath we can start uploading files
+#here with fileList and currentPath we can start uploading files they have not been added to upload code
+#will need to make another function to get a list of files to upload with their paths
 #add code to add folders to tree data structure as they are traversed, then as the tree is traversed, 
 #folders are uploaded automatically as individual items
 #modify code to create identifiers so that currentPath becomes file name and identifier
