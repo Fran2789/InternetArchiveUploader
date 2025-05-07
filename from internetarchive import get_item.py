@@ -170,3 +170,5 @@ try:
 except Exception:
 	upload()
 
+
+# add logging for tracking purposes
