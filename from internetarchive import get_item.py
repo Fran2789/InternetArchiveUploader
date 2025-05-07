@@ -165,6 +165,8 @@ def uploadInProgress():
 	r = upload(IdentifierDash, files=fileListGenerator(), metadata=md)
 	r[0].status_code
 
+#maybe a while true toop?
+
 def uploadStarter():
 
 	try:
