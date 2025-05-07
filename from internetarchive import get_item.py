@@ -160,15 +160,17 @@ def folders():
 
 #put this in loop 
 
-def upload():
+def uploadInProgress():
 	md = {'collection': 'community_data', 'title': title, 'mediatype': 'data'}
 	r = upload(IdentifierDash, files=fileListGenerator(), metadata=md)
 	r[0].status_code
 
-try:
-	upload()
-except Exception:
-	upload()
+def uploadStarter():
+
+	try:
+		uploadInProgress()
+	except Exception:
+		uploadStarter()
 
 
 # add logging for tracking purposes
