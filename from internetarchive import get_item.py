@@ -165,4 +165,8 @@ def upload():
 	r = upload(IdentifierDash, files=fileListGenerator(), metadata=md)
 	r[0].status_code
 
+try:
+	upload()
+except Exception:
+	upload()
 
