@@ -159,8 +159,10 @@ def folders():
 # upload code
 
 #put this in loop 
-md = {'collection': 'community_data', 'title': title, 'mediatype': 'data'}
-r = upload(IdentifierDash, files=fileListGenerator(), metadata=md)
-r[0].status_code
+
+def upload():
+	md = {'collection': 'community_data', 'title': title, 'mediatype': 'data'}
+	r = upload(IdentifierDash, files=fileListGenerator(), metadata=md)
+	r[0].status_code
 
 
